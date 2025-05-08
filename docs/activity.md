@@ -16,7 +16,7 @@ Gets the recent trade ads
 
 ```javascript
 // Get Trade Ads exmaple
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.activity.getTradeAds().then(function(data){
     console.log(data[0]) // Gets the most recent trade ad

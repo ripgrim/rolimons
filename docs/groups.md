@@ -19,7 +19,7 @@ Get's info about the group
 
 ```javascript
 // Get Group info exmaple
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.groups.getInfo(3959677).then(function(group) {
     console.log(group.name, "is made by", group.owner)

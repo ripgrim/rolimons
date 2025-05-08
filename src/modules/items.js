@@ -36,6 +36,7 @@ async function getItems() {
     if (!Cached['Status']) {
         items = await req.request(endpoint)
         if (items && items.rateLimited) {
+            console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
             return { rateLimited: true };
         }
         if (!items || !items['data']) {
@@ -82,6 +83,7 @@ async function searchItem(mode, info) {
         await getItems().then( 
             async function(data) {
                 if (data && data.rateLimited) {
+                    console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
                     result = { rateLimited: true };
                     return result;
                 }
@@ -120,6 +122,7 @@ async function searchItem(mode, info) {
         await getItems().then(
             async function(data) {
                 if (data && data.rateLimited) {
+                    console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
                     result = { rateLimited: true };
                     return result;
                 }
@@ -158,6 +161,7 @@ async function getUAID(UAID, users) {
     data['history'] = []
     const response = await req.request(uaidurl + UAID)
     if (response && response.rateLimited) {
+        console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
         return { rateLimited: true };
     }
     if (!response || !response['data']) {

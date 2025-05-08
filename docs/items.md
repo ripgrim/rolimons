@@ -18,7 +18,7 @@ _This does not have a "practical" use._
 
 ```javascript
 // Get items example
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.items.getItems().then(function(data) {
     console.log(data) // Returns all of the items in Rolimons
@@ -43,7 +43,7 @@ _THIS FUNCTION USES CACHING!! SEE BELOW ON HOW TO DELETE CACHE OCCASIONALLY!_
 
 ```javascript
 // Searching VIA acryonym
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.items.searchItem("name", "SSHF").then(
     function(item) {
@@ -56,7 +56,7 @@ rolimons.items.searchItem("name", "SSHF").then(
 
 ```javascript
 //Searching VIA ID
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.items.searchItem("id", 1028606).then(
     function(item) {
@@ -88,7 +88,7 @@ Clears the stored cache data to update item info.
 
 ```javascript
 // Clear cache example
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.items.searchItem("name", "CWHP").then(
     function(item) {
@@ -112,7 +112,7 @@ Gets UUID current owner & it's history.
 ```javascript
 // Get UUID example
 // Do not take the response from this snippet as granted, as results are subject to change!
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.items.getUUID(50921234383, 3).then(function(uuid) {
     console.log(uuid.last_owner, "is the current owner")

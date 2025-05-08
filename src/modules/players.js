@@ -8,6 +8,7 @@ const playerapi = "https://api.rolimons.com/players/v1/playerinfo/"
 async function getPlayer(userID) {
     let player = await req.request(playerapi + userID)
     if (player && player.rateLimited) {
+        console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
         return { rateLimited: true };
     }
     if (!player || !player['data']) {
@@ -24,6 +25,7 @@ async function getLeaderboard(page) {
     let count = 1
     const request = await req.request(leaderboard + page)
     if (request && request.rateLimited) {
+        console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
         return { rateLimited: true };
     }
     if (!request || !request['data']) {

@@ -9,6 +9,7 @@ async function getInfo(gameID) {
 
         const request = await req.request(url + gameID)
         if (request && request.rateLimited) {
+            console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
             return { rateLimited: true };
         }
         if (!request || !request['data']) {

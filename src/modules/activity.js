@@ -30,6 +30,7 @@ async function translate(arr) {
 async function getTradeAds() {
     const response = await req.request(tradeads)
     if (response && response.rateLimited) {
+        console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
         return { rateLimited: true };
     }
     if (!response || !response['data'] || !response['data'].trade_ads) {

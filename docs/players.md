@@ -16,7 +16,7 @@ Gets info about the player _(must be registered on Rolimons)_
 
 ```javascript
 // Get Player Example
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.players.getPlayer(540074852).then(function(player) {
     console.log(player.name + "'s last location was " + player.last_location)
@@ -51,7 +51,7 @@ Returns an entire page of the leaderboard
 ### Example Usage
 
 <pre class="language-javascript"><code class="lang-javascript"><strong>// Get leaderboard example
-</strong><strong>const rolimons = require("rolimons")
+</strong><strong>const rolimons = require("rolimons-fixed")
 </strong>
 rolimons.players.getLeaderboard(1).then(function(data) {
     // data[0] means the first, topmost user in that page

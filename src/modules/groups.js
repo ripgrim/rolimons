@@ -8,6 +8,7 @@ async function getInfo(groupID) {
         let data = [] // Default array
         const request = await req.request(url + groupID)
         if (request && request.rateLimited) {
+            console.log("[Rolimons] You are being rate limited by the API. Please wait and try again.");
             return { rateLimited: true };
         }
         if (!request || !request['data']) {

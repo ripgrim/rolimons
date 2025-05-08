@@ -19,7 +19,7 @@ Get's info about the game
 
 ```javascript
 // Get Game info exmaple
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.games.getInfo(2753915549).then(function(game) {
     console.log(game.name, "is made by", game.creator_name)
