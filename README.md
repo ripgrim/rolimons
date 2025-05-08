@@ -11,12 +11,12 @@
 
 ## Installation
 ```
-npm install rolimons
+npm install rolimons-fixed
 ```
 
 ## Example usage
 ```javascript
-const rolimons = require("rolimons")
+const rolimons = require("rolimons-fixed")
 
 rolimons.items.searchItem("name", "SSHF").then(
     function(item) {
