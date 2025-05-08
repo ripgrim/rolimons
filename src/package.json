@@ -3,26 +3,29 @@
     "axios": "^1.4.0",
     "cheerio": "^1.0.0-rc.12"
   },
-  "name": "rolimons",
-  "version": "1.1.0",
+  "name": "rolimons-fixed",
+  "version": "1.2.0",
   "description": "A High-level API Wrapper for Rolimons",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bump-patch-publish": "npm version patch && npm publish --access public",
+    "bump-minor-publish": "npm version minor && npm publish --access public",
+    "bump-major-publish": "npm version major && npm publish --access public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MEMEZNUT999/rolimons.git"
+    "url": "git+https://github.com/ripgrim/rolimons.git"
   },
   "keywords": [
     "rolimons",
     "API",
     "wrapper"
   ],
-  "author": "Shiawase",
+  "author": "grim",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MEMEZNUT999/rolimons/issues"
+    "url": "https://github.com/ripgrim/rolimons/issues"
   },
-  "homepage": "https://github.com/MEMEZNUT999/rolimons#readme"
+  "homepage": "https://github.com/ripgrim/rolimons#readme"
 }

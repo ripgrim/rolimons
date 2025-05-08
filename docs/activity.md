@@ -8,6 +8,10 @@ description: rolimons.activity
 
 Gets the recent trade ads
 
+**Note:**
+- If the API rate limits you, this function will return `{ rateLimited: true }`.
+- If the API response is invalid, it returns an empty array.
+
 ### Example usage
 
 ```javascript

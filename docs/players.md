@@ -8,6 +8,10 @@ description: rolimons.players
 
 Gets info about the player _(must be registered on Rolimons)_
 
+**Note:**
+- If the API rate limits you, this function will return `{ rateLimited: true }`.
+- If the API response is invalid, it returns an empty object.
+
 ### Example usage
 
 ```javascript
@@ -39,6 +43,10 @@ rolimons.players.getPlayer(540074852).then(function(player) {
 ## .getLeaderboard(\<int> page>
 
 Returns an entire page of the leaderboard
+
+**Note:**
+- If the API rate limits you, this function will return `{ rateLimited: true }`.
+- If the API response is invalid, it returns an empty array.
 
 ### Example Usage
 

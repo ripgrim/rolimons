@@ -10,6 +10,10 @@ Gets the entire item data from Rolimons.\
 \
 _This does not have a "practical" use._
 
+**Note:**
+- If the API rate limits you, this function will return `{ rateLimited: true }`.
+- If the API response is invalid, it returns an empty object.
+
 ### Example usage
 
 ```javascript
@@ -29,6 +33,11 @@ rolimons.items.getItems().then(function(data) {
 Fetches about an item from the Rolimons API and returns it\
 \
 _THIS FUNCTION USES CACHING!! SEE BELOW ON HOW TO DELETE CACHE OCCASIONALLY!_
+
+**Note:**
+- Searching by name is case-insensitive.
+- If the API rate limits you, this function will return `{ rateLimited: true }`.
+- If the item is not found or the API response is invalid, it returns `false`.
 
 ### Example usage
 
@@ -60,16 +69,16 @@ rolimons.items.searchItem("id", 1028606).then(
 
 | Returned Value        | Description                                                 |
 | --------------------- | ----------------------------------------------------------- |
-| name \<string>        | **The item's full name**                                    |
-| acronym \<string>     | **The item's full acronym **~~**(empty when no acronym)**~~ |
-| value \<int>          | **The item's value**                                        |
-| default\_value \<int> | **Also the item's value**                                   |
-| rap \<int>            | **The item's RAP (Recent Average Price)**                   |
-| demand \<string>      | **The item's demand**                                       |
-| trend \<string>       | **The item's trend**                                        |
-| projected \<boolean>  | **Is the item projected**                                   |
-| hyped \<boolean>      | **Is the item hyped**                                       |
-| rare \<boolean>       | **Is the item rare**                                        |
+| name <string>        | **The item's full name**                                    |
+| acronym <string>     | **The item's full acronym **~~**(empty when no acronym)**~~ |
+| value <int>          | **The item's value**                                        |
+| default_value <int> | **Also the item's value**                                   |
+| rap <int>            | **The item's RAP (Recent Average Price)**                   |
+| demand <string>      | **The item's demand**                                       |
+| trend <string>       | **The item's trend**                                        |
+| projected <boolean>  | **Is the item projected**                                   |
+| hyped <boolean>      | **Is the item hyped**                                       |
+| rare <boolean>       | **Is the item rare**                                        |
 
 ## `.clear_cache( <void> )`
 
@@ -94,6 +103,10 @@ rolimons.items.searchItem("name", "CWHP").then(
 
 Gets UUID current owner & it's history.
 
+**Note:**
+- If the API rate limits you, this function will return `{ rateLimited: true }`.
+- If the API response is invalid, it returns an empty array.
+
 ### Example usage
 
 ```javascript
@@ -111,19 +124,19 @@ rolimons.items.getUUID(50921234383, 3).then(function(uuid) {
 
 | Returned Value             | Description                          |
 | -------------------------- | ------------------------------------ |
-| item\_name \<string>       | **Item Name**                        |
-| last\_owner \<string>      | **Last owner name**                  |
-| serial \<string>           | **Item UUID serial**                 |
-| owned since \<string>      | **Last owner owned this UUID since** |
-| created \<string>          | **Item UUID creation date**          |
-| uuid\_discovered \<string> | **Item UUID discovery date**         |
-| history \<array>           | **Item UUID history**                |
+| item_name <string>       | **Item Name**                        |
+| last_owner <string>      | **Last owner name**                  |
+| serial <string>           | **Item UUID serial**                 |
+| owned since <string>      | **Last owner owned this UUID since** |
+| created <string>          | **Item UUID creation date**          |
+| uuid_discovered <string> | **Item UUID discovery date**         |
+| history <array>           | **Item UUID history**                |
 
-NOTICE: history\[0] IS ALWAYS THE CURRENT OWNER!!!
+NOTICE: history[0] IS ALWAYS THE CURRENT OWNER!!!
 
 | History data             | Description               |
 | ------------------------ | ------------------------- |
-| id \<int>                | **Previous Owner's ID**   |
-| name \<string>           | **Previous Owner's name** |
-| updated\_since \<string> | **Last Updated**          |
-| updated\_date \<string>  | **Updated Date**          |
+| id <int>                | **Previous Owner's ID**   |
+| name <string>           | **Previous Owner's name** |
+| updated_since <string> | **Last Updated**          |
+| updated_date <string>  | **Updated Date**          |

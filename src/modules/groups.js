@@ -7,6 +7,12 @@ async function getInfo(groupID) {
     try {
         let data = [] // Default array
         const request = await req.request(url + groupID)
+        if (request && request.rateLimited) {
+            return { rateLimited: true };
+        }
+        if (!request || !request['data']) {
+            return {};
+        }
         const parsed = cheerio.load(request['data'])
         data['owner_id'] = parseInt(parsed('#page_content_body > div.top_profile_grid.mt-2.mx-0.mx-sm-3.shadow_md_25 > div.top_profile_grid_section_2.d-flex.top_profile_stat_box_owner > div.text-truncate > div.text-truncate > a').attr('href').replace('/player/', ''))
         data['owner'] = parsed('#page_content_body > div.top_profile_grid.mt-2.mx-0.mx-sm-3.shadow_md_25 > div.top_profile_grid_section_2.d-flex.top_profile_stat_box_owner > div.text-truncate > div.text-truncate > a').text()
@@ -17,7 +23,8 @@ async function getInfo(groupID) {
         data['last_scan'] = parsed('#page_content_body > div.top_profile_grid.mt-2.mx-0.mx-sm-3.shadow_md_25 > div.top_profile_grid_section_8.d-flex.top_profile_stat_box > div.top_profile_stat_text_container > div.top_profile_stat_data').text()
         return data
     } catch (err) {
-        console.log(err)
+        // Optionally log error
+        return {};
     }
 }
 

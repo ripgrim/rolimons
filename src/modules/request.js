@@ -2,16 +2,17 @@ const axios = require('axios');
 
 async function request(...args) {
     let config = {
-        headers: args[1] 
+        headers: args[1]
     }
-    await axios.get(args[0], config) 
-        .then(async function(res) {
-            response = res
-        })
-        .catch(function(error) {
-            console.log(error)
-        })
-    return response
+    try {
+        const response = await axios.get(args[0], config);
+        return response;
+    } catch (error) {
+        if (error.response && error.response.status === 429) {
+            return { rateLimited: true };
+        }
+        return null;
+    }
 }
 
 module.exports = { 

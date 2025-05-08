@@ -7,18 +7,28 @@ const playerapi = "https://api.rolimons.com/players/v1/playerinfo/"
 
 async function getPlayer(userID) {
     let player = await req.request(playerapi + userID)
+    if (player && player.rateLimited) {
+        return { rateLimited: true };
+    }
+    if (!player || !player['data']) {
+        return {};
+    }
     return player['data']
 }
 
 async function getLeaderboard(page) {
-
     if (!page || page > 20) {
         return undefined
     }
-
     let players = []
     let count = 1
     const request = await req.request(leaderboard + page)
+    if (request && request.rateLimited) {
+        return { rateLimited: true };
+    }
+    if (!request || !request['data']) {
+        return [];
+    }
     const parsed = cheerio.load(request['data'])
     parsed('#page_content_body > div.d-flex.justify-content-between.flex-wrap.px-3.mt-3').each((i, e) => {
         for (let x = 0; x < 50; x++) {

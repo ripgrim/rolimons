@@ -11,6 +11,10 @@ _THIS DOESNT SUPPORT GAMES WHICH AREN'T IN THEIR DATABASE_
 
 Get's info about the game
 
+**Note:**
+- If the API rate limits you, this function will return `{ rateLimited: true }`.
+- If the API response is invalid, it returns an empty object.
+
 ### Example usage
 
 ```javascript

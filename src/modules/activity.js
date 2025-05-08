@@ -29,6 +29,12 @@ async function translate(arr) {
 
 async function getTradeAds() {
     const response = await req.request(tradeads)
+    if (response && response.rateLimited) {
+        return { rateLimited: true };
+    }
+    if (!response || !response['data'] || !response['data'].trade_ads) {
+        return [];
+    }
     const tradejson = response['data'].trade_ads
     let translated = await translate(tradejson)
     let trades = []
