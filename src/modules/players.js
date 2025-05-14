@@ -52,7 +52,53 @@ async function getLeaderboard(page) {
     return players
 }
 
+/**
+ * Fetches the user's value chart data from their Rolimons profile page.
+ * @param {number|string} userID - The Rolimons user ID.
+ * @returns {Promise<Object>} The full chart data object from the site.
+ */
+async function getChartData(userID) {
+    const profileUrl = `https://www.rolimons.com/player/${userID}`;
+
+    try {
+        const response = await req.request(profileUrl);
+        if (!response || !response.data) {
+            console.warn(`[getChartData] Empty response for user ${userID}`);
+            return {};
+        }
+
+        const html = response.data;
+
+        const chartMatch = html.match(/var\s+chart_data\s*=\s*({[\s\S]*?})\s*;/);
+        const oldChartMatch = html.match(/var\s+old_chart_data\s*=\s*({[\s\S]*?})\s*;/);
+
+        const result = {};
+
+        if (chartMatch) {
+            try {
+                result.chart_data = JSON.parse(chartMatch[1]);
+            } catch {
+                result.chart_data = eval('(' + chartMatch[1] + ')');
+            }
+        }
+
+        if (oldChartMatch) {
+            try {
+                result.old_chart_data = JSON.parse(oldChartMatch[1]);
+            } catch {
+                result.old_chart_data = eval('(' + oldChartMatch[1] + ')');
+            }
+        }
+
+        return result;
+    } catch (err) {
+        console.error(`[getChartData] Failed to fetch: ${err.message}`);
+        return {};
+    }
+}
+
 module.exports = {
     getPlayer,
-    getLeaderboard
+    getLeaderboard,
+    getChartData
 }
